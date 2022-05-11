@@ -11,7 +11,7 @@ const Navbar = () => {
             <AppBar position="sticky" sx={{ backgroundColor: "#FFFFFF", boxShadow: "none", height: "97px", justifyContent: "center" }}>
                 <Toolbar className="toolbar">
                     <div className="left">
-                        <Typography variant="h4" sx={{ fontFamily: 'Pattaya', color: "#333333" }}>
+                        <Typography className="logo" variant="h4" sx={{ fontFamily: 'Pattaya', color: "#333333" }}>
                             Image Galary
                         </Typography>
                     </div>
@@ -29,7 +29,7 @@ const Navbar = () => {
                     </div>
                     <div className="hamb_seach">
                         <SearchIcon className="search" fontSize="large" />
-                        <MenuOutlinedIcon fontSize="large" />
+                        <MenuOutlinedIcon className="ham" fontSize="large" />
                     </div>
                 </Toolbar>
             </AppBar >
@@ -141,6 +141,28 @@ const Wrapper = styled.div`
             .search{
                 margin-right:1rem ;
                 display:inline;
+            }
+        }
+        
+    }
+    @media (max-width:460px){
+        .logo{
+            font-size: 30px;
+        }
+        .hamb_seach{
+            .search,.ham{
+                font-size:1.7rem ;
+            }
+        }
+        
+    }
+    @media (max-width:330px){
+        .logo{
+            font-size: 26px;
+        }
+        .hamb_seach{
+            .search,.ham{
+                font-size:1.5rem ;
             }
         }
         

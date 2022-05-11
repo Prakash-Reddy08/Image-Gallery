@@ -42,17 +42,106 @@ const Wrapper = styled.div`
             color:#FFFFFF ;
             .autocomplete{
                 background-color: #FFFFFF;
-                width:808px;
+                width:55rem;
                 border-radius: 5px;
             }
             h2{
                 font-weight:700;
                 font-size:32px;
-                margin-bottom: 0;
             }
             p{
                 font-weight:500 ;
                 font-size:14px;
+            }
+        }
+        @media (max-width:960px){
+            .info{
+                .autocomplete{
+                    width:50rem;
+                }
+            }
+        }
+        @media (max-width:850px){
+            .info{
+                .autocomplete{
+                    width:40rem;
+                }
+                h2{ 
+                    font-size:29px ;
+                }
+            }
+        }
+        @media (max-width:716px){
+            .info{
+                .autocomplete{
+                    width:35rem;
+                }
+                h2{
+                    word-wrap:break-word;
+                    font-size:24px ;
+                }
+            }
+        }
+        @media (max-width:630px){
+            .info{
+                .autocomplete{
+                    width:28rem;
+                }
+                h2{
+                    font-size:20px ;
+                }
+                p{
+                    font-size:10px ;
+                }
+            }
+        }
+        @media (max-width:500px){
+            .info{
+                .autocomplete{
+                    width:20rem;
+                }
+                h2{
+                    font-size:20px ;
+                }
+                p{
+                    font-size:10px ;
+                }
+            }
+        }
+        @media (max-width:460px){
+            .info{
+                .autocomplete{
+                    width:16rem;
+                }
+                h2{
+                    font-size:16px;
+                }
+            }
+        }
+        @media (max-width:365px){
+            .info{
+                .autocomplete{
+                    width:13rem;
+                }
+                h2{
+                    font-size:14px;
+                }
+                p{
+                    font-size:8px ;
+                }
+            }
+        }
+        @media (max-width:320px){
+            .info{
+                .autocomplete{
+                    width:10rem;
+                }
+                h2{
+                    font-size:13px;
+                }
+                p{
+                    font-size:7px ;
+                }
             }
         }
 }
