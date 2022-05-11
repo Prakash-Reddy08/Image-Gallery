@@ -14,7 +14,7 @@ const Hero = () => {
                 <div className="info">
                     <h2>Download High Quality Images by creators</h2>
                     <p>Over 2.4 million+ stock Images by our talented community</p>
-                    <Autocomplete freeSolo sx={{ width: "808px", backgroundColor: "#FFFFFF", borderRadius: "5px" }} options={dummyData} renderInput={(params) => <TextField {...params} label="Search high resolution Images, categories, wallpapers" />} />
+                    <Autocomplete className='autocomplete' freeSolo options={dummyData} renderInput={(params) => <TextField {...params} label="Search high resolution Images, categories, wallpapers" />} />
                 </div>
             </div>
         </Wrapper>
@@ -40,6 +40,11 @@ const Wrapper = styled.div`
             align-items:center ;
             position:absolute;
             color:#FFFFFF ;
+            .autocomplete{
+                background-color: #FFFFFF;
+                width:808px;
+                border-radius: 5px;
+            }
             h2{
                 font-weight:700;
                 font-size:32px;
