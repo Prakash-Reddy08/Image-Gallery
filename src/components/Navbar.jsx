@@ -35,8 +35,7 @@ const Navbar = () => {
 
 const StyledToolbar = styled(Toolbar)({
     display: "flex",
-    justifyContent: "space-between",
-    margin: "0 150px 0 150px"
+    justifyContent: "space-evenly",
 })
 
 const StyledMid = styled("div")({
