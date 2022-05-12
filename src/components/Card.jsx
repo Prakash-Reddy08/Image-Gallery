@@ -1,9 +1,10 @@
 import React from 'react'
 import styled from '@emotion/styled';
 import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
+import { useGlobalContext } from '../context/context';
 
-const dark = true;
 const Card = ({ image }) => {
+    const { dark } = useGlobalContext();
     return (
         <Wrapper>
             <div className={image.width > image.height ? "card card_wide" : "card card_tall"}>

@@ -1,9 +1,10 @@
 import styled from "@emotion/styled";
+import { useGlobalContext } from "../context/context.js";
 import { photos } from "../photosData.js";
 import Card from "./Card.jsx";
 
-const dark = true;
 const Images = () => {
+    const { dark } = useGlobalContext();
     return (
         <Wrapper>
             <div className={dark ? "grid dark" : "grid"}>
