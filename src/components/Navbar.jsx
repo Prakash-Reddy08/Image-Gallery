@@ -8,7 +8,7 @@ const dummyData = ["HTML", "CSS", "javaScript", "TypeScript"];
 const Navbar = () => {
     return (
         <Wrapper>
-            <AppBar position="sticky" sx={{ backgroundColor: "#FFFFFF", boxShadow: "none", height: "97px", justifyContent: "center" }}>
+            <AppBar position="fixed" sx={{ backgroundColor: "#FFFFFF", boxShadow: "none", height: "97px", justifyContent: "center" }}>
                 <Toolbar className="toolbar">
                     <div className="left">
                         <Typography className="logo" variant="h4" sx={{ fontFamily: 'Pattaya', color: "#333333" }}>

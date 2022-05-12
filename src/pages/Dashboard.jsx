@@ -25,6 +25,6 @@ const Dashboard = () => {
 }
 
 const Wrapper = styled.div`
-
+    background-color:#E5E5E5 ;
 `
 export default Dashboard

@@ -22,6 +22,7 @@ const Hero = () => {
 }
 
 const Wrapper = styled.div`
+    margin-top:97px;
     .heroContainer{
         position: relative;
         min-height:384px;
