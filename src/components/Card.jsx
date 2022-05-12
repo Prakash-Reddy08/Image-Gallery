@@ -2,25 +2,26 @@ import React from 'react'
 import styled from '@emotion/styled';
 import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
 
+const dark = true;
 const Card = ({ image }) => {
     return (
         <Wrapper>
             <div className={image.width > image.height ? "card card_wide" : "card card_tall"}>
                 <div className="card">
                     <img src={image.urls.small} alt="dkasj" />
-                    <div className="info">
+                    <div className={dark ? "info dark" : "info"}>
                         <div className="left">
                             <img src={image.user.profile_image.small} alt={image.user.username} />
-                            <div className="user">
-                                <div className="name">
+                            <div className={dark ? "dark user" : "user"}>
+                                <div className={dark ? "dark name" : "name"}>
                                     {image.user.name}
                                 </div>
-                                <div className="username">
+                                <div className={dark ? "dark username" : "username"}>
                                     @{image.user.username}
                                 </div>
                             </div>
                         </div>
-                        <div className="right">
+                        <div className={dark ? "dark right" : "right"}>
                             <ThumbUpOutlinedIcon />
                             <p>{image.likes}</p>
                         </div>
@@ -89,6 +90,10 @@ const Wrapper = styled.div`
         p{
             margin-left: 5px;
         }
+    }
+    .dark{
+        background-color:#141414 ;
+        color:#e5e5e5;
     }
 
 `

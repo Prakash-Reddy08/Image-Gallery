@@ -2,21 +2,20 @@ import { AppBar, Autocomplete, Switch, styled as style, TextField, Toolbar, Typo
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 import SearchIcon from '@mui/icons-material/Search';
 import styled from '@emotion/styled'
-
 const dummyData = ["HTML", "CSS", "javaScript", "TypeScript"];
-
+const dark = true;
 const Navbar = () => {
     return (
         <Wrapper>
-            <AppBar position="fixed" sx={{ backgroundColor: "#FFFFFF", boxShadow: "none", height: "97px", justifyContent: "center" }}>
-                <Toolbar className="toolbar">
+            <AppBar position="fixed" sx={{ backgroundColor: `${dark ? "#232323" : "#FFFFFF"}`, boxShadow: "none", height: "97px", justifyContent: "center" }}>
+                <Toolbar className={dark ? "toolbar dark" : "toolbar"}>
                     <div className="left">
-                        <Typography className="logo" variant="h4" sx={{ fontFamily: 'Pattaya', color: "#333333" }}>
+                        <Typography className="logo" variant="h4" sx={{ fontFamily: 'Pattaya', color: `${dark ? "#FFFFFF" : "#333333"}` }}>
                             Image Galary
                         </Typography>
                     </div>
-                    <div className="mid">
-                        <Autocomplete freeSolo sx={{ width: "419px" }} options={dummyData} renderInput={(params) => <TextField {...params} label="Search Images here" />} />
+                    <div className={dark ? "mid dark" : "mid"} >
+                        <Autocomplete freeSolo sx={{ width: "419px", backgroundColor: `${dark ? "#4f4f4f" : "#FFFFFF"}` }} options={dummyData} renderInput={(params) => <TextField {...params} label="Search Images here" />} />
                         <ul className="ul">
                             <li>Explore</li>
                             <li>Collection</li>
@@ -105,6 +104,11 @@ const Wrapper = styled.div`
         color: #333333;
         font-weight: 700;
     }
+    .dark{
+        .ul,.right,.hamb_seach{
+            color:#FFFFFF;
+        }
+    }
 
     .hamb_seach{
         display:none;
@@ -125,7 +129,7 @@ const Wrapper = styled.div`
     @media (max-width:1176px){
         .mid{
             .ul{
-                    display:none ;
+                display:none ;
             }
         }
     }

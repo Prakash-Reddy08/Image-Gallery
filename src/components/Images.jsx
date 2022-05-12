@@ -1,24 +1,34 @@
 import styled from "@emotion/styled";
 import { photos } from "../photosData.js";
 import Card from "./Card.jsx";
+
+const dark = true;
 const Images = () => {
     return (
         <Wrapper>
-            <div className="grid_container">
-                {
-                    photos.map((photo) => {
-                        return <Card image={photo} key={photo.id} />
-                    })
-                }
+            <div className={dark ? "grid dark" : "grid"}>
+
+                <div className={dark ? "grid_container dark" : "grid_container"}>
+                    {
+                        photos.map((photo) => {
+                            return <Card image={photo} key={photo.id} />
+                        })
+                    }
+                </div>
             </div>
         </Wrapper>
     )
 }
 
 const Wrapper = styled.div`
-        padding: 50px 0 ;
-        display:flex ;
-        justify-content:center;
+        .grid{
+            display:flex ;
+            justify-content: center;
+            padding: 50px 0 ;
+            &.dark{
+                background-color:#232323;
+            }
+        }
         .grid_container{
             width:80%;
             margin:0 150px ;
