@@ -1,11 +1,30 @@
+import Hero from "../components/Hero"
 import Navbar from "../components/Navbar"
+import styled from "@emotion/styled"
+import Loading from "../components/Loading";
+import Images from "../components/Images";
+
+const loading = false;
 
 const Dashboard = () => {
+    if (loading) {
+        return (
+            <Wrapper>
+                <Navbar />
+                <Loading />
+            </Wrapper>
+        )
+    }
     return (
-        <div>
+        <Wrapper>
             <Navbar />
-        </div>
+            <Hero />
+            <Images />
+        </Wrapper>
     )
 }
 
+const Wrapper = styled.div`
+
+`
 export default Dashboard
