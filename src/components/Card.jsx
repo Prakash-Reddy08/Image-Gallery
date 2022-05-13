@@ -39,14 +39,15 @@ const Card = ({ image }) => {
 
 const Wrapper = styled.div`
 .card_wide{
-        grid-column:span 2;
-    }
-    .card_tall{
-        grid-row:span 2;
-    }
-    .card{
-        display:grid ;
-        flex-direction:column;
+    grid-column:span 2;
+}
+.card_tall{
+    grid-row:span 2;
+}
+.card{
+    cursor: pointer;
+    display:grid ;
+    flex-direction:column;
         border-radius: 8px;
         overflow:hidden;
         img{

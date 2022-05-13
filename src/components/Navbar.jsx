@@ -3,7 +3,7 @@ import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 import SearchIcon from '@mui/icons-material/Search';
 import styled from '@emotion/styled'
 import { useGlobalContext } from "../context/context";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 const dummyData = ["HTML", "CSS", "javaScript", "TypeScript"];
 
 const Navbar = () => {

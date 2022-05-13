@@ -11,7 +11,7 @@ const Images = () => {
 
                 <div className={dark ? "grid_container dark" : "grid_container"}>
                     {
-                        photos.map((photo) => {
+                        photos.results.map((photo) => {
                             return <Card image={photo} key={photo.id} />
                         })
                     }
