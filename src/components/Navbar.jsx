@@ -3,10 +3,17 @@ import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 import SearchIcon from '@mui/icons-material/Search';
 import styled from '@emotion/styled'
 import { useGlobalContext } from "../context/context";
+import { useEffect, useState } from "react";
 const dummyData = ["HTML", "CSS", "javaScript", "TypeScript"];
 
 const Navbar = () => {
     const { dark, toggleDarkMode } = useGlobalContext();
+    const [userInput, setUserInput] = useState("");
+
+    // useEffect(() => {
+    //     const url = ``
+    // },[userInput])
+
     return (
         <Wrapper>
             <AppBar position="fixed" sx={{ backgroundColor: `${dark ? "#232323" : "#FFFFFF"}`, boxShadow: "none", height: "97px", justifyContent: "center" }}>
@@ -17,7 +24,7 @@ const Navbar = () => {
                         </Typography>
                     </div>
                     <div className={dark ? "mid dark" : "mid"} >
-                        <Autocomplete freeSolo sx={{ width: "419px", backgroundColor: `${dark ? "#4f4f4f" : "#FFFFFF"}` }} options={dummyData} renderInput={(params) => <TextField {...params} label="Search Images here" />} />
+                        <Autocomplete onChange={(e, value) => console.log(value)} sx={{ width: "419px", backgroundColor: `${dark ? "#4f4f4f" : "#FFFFFF"}` }} options={dummyData} renderInput={(params) => <TextField value={userInput} onChange={(e) => setUserInput(e.target.value)} {...params} label="Search Images here" />} />
                         <ul className="ul">
                             <li>Explore</li>
                             <li>Collection</li>

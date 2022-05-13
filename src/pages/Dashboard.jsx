@@ -3,9 +3,10 @@ import Navbar from "../components/Navbar"
 import styled from "@emotion/styled"
 import Loading from "../components/Loading";
 import Images from "../components/Images";
+import Modal from "../components/Modal";
 
 const loading = false;
-
+const modal = true;
 const Dashboard = () => {
     if (loading) {
         return (
@@ -20,6 +21,7 @@ const Dashboard = () => {
             <Navbar />
             <Hero />
             <Images />
+            {modal && <Modal />}
         </Wrapper>
     )
 }
