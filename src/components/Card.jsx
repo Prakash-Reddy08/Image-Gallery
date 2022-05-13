@@ -4,10 +4,14 @@ import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
 import { useGlobalContext } from '../context/context';
 
 const Card = ({ image }) => {
-    const { dark, openModal } = useGlobalContext();
+    const { dark, openModal, Modaldata } = useGlobalContext();
     return (
         <Wrapper>
-            <div onClick={openModal} className={image.width > image.height ? "card card_wide" : "card card_tall"}>
+            <div onClick={() => {
+                Modaldata(image);
+                openModal();
+            }}
+                className={image.width > image.height ? "card card_wide" : "card card_tall"}>
                 <div className="card">
                     <img src={image.urls.small} alt="dkasj" />
                     <div className={dark ? "info dark" : "info"}>

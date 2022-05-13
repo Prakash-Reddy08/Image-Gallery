@@ -6,6 +6,7 @@ const AppProvider = ({ children }) => {
 
     const [dark, setDark] = useState(false);
     const [modalOpen, setModalOpen] = useState(false);
+    const [modalInfo, setModalInfo] = useState([]);
     const toggleDarkMode = () => {
         setDark(!dark);
     }
@@ -17,6 +18,10 @@ const AppProvider = ({ children }) => {
         setModalOpen(false);
     }
 
+    const Modaldata = (data) => {
+        setModalInfo(data);
+    }
+
     return (
         <AppContext.Provider
             value={
@@ -25,7 +30,9 @@ const AppProvider = ({ children }) => {
                     toggleDarkMode,
                     modalOpen,
                     openModal,
-                    closeModal
+                    closeModal,
+                    modalInfo,
+                    Modaldata
                 }}>
             {children}
         </AppContext.Provider>
