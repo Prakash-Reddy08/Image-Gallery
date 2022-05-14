@@ -8,6 +8,7 @@ import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 import { useGlobalContext } from "../context/context";
 import Button from "./Button";
+import formatNumber from "../utils/FormatNumbers";
 
 const Modal = () => {
     const { modalOpen, closeModal, modalInfo, dark } = useGlobalContext();
@@ -77,7 +78,7 @@ const Modal = () => {
                                 </div>
                                 <div className="like_count">
                                     <ThumbUpOutlinedIcon className="like" />
-                                    <p>{modalInfo?.likes}</p>
+                                    <p>{formatNumber(modalInfo?.likes)}</p>
                                 </div>
                             </div>
                         </div>

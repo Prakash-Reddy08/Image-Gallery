@@ -1,17 +1,16 @@
 import styled from "@emotion/styled";
 import { useGlobalContext } from "../context/context.js";
-import { photos } from "../photosData.js";
 import Card from "./Card.jsx";
 
 const Images = () => {
-    const { dark } = useGlobalContext();
+    const { dark, data } = useGlobalContext();
     return (
         <Wrapper>
             <div className={dark ? "grid dark" : "grid"}>
 
                 <div className={dark ? "grid_container dark" : "grid_container"}>
                     {
-                        photos.results.map((photo) => {
+                        data?.results?.map((photo) => {
                             return <Card image={photo} key={photo.id} />
                         })
                     }

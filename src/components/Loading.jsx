@@ -1,5 +1,5 @@
 import styled from "@emotion/styled"
-import loading from '../utils/loading.svg'
+import loading from '../utils/loading.png'
 const Loading = () => {
     return (
         <Wrapper>

@@ -4,10 +4,10 @@ import styled from "@emotion/styled"
 import Loading from "../components/Loading";
 import Images from "../components/Images";
 import Modal from "../components/Modal";
+import { useGlobalContext } from "../context/context";
 
-const loading = false;
-const modal = true;
 const Dashboard = () => {
+    const { loading } = useGlobalContext();
     if (loading) {
         return (
             <Wrapper>
@@ -21,7 +21,7 @@ const Dashboard = () => {
             <Navbar />
             <Hero />
             <Images />
-            {modal && <Modal />}
+            <Modal />
         </Wrapper>
     )
 }

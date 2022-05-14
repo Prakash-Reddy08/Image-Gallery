@@ -2,6 +2,7 @@ import React from 'react'
 import styled from '@emotion/styled';
 import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
 import { useGlobalContext } from '../context/context';
+import formatNumber from '../utils/FormatNumbers';
 
 const Card = ({ image }) => {
     const { dark, openModal, Modaldata } = useGlobalContext();
@@ -28,7 +29,7 @@ const Card = ({ image }) => {
                         </div>
                         <div className={dark ? "dark right" : "right"}>
                             <ThumbUpOutlinedIcon />
-                            <p>{image.likes}</p>
+                            <p>{formatNumber(image.likes)}</p>
                         </div>
                     </div>
                 </div>

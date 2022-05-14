@@ -3,16 +3,32 @@ import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 import SearchIcon from '@mui/icons-material/Search';
 import styled from '@emotion/styled'
 import { useGlobalContext } from "../context/context";
-import { useState } from "react";
-const dummyData = ["HTML", "CSS", "javaScript", "TypeScript"];
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const Navbar = () => {
-    const { dark, toggleDarkMode } = useGlobalContext();
+    const { dark, toggleDarkMode, userSearch } = useGlobalContext();
     const [userInput, setUserInput] = useState("");
+    const [suggestions, setSearchSuggestions] = useState([])
+    const url = `https://api.unsplash.com/search/photos/?query=${userInput}&client_id=RN5XslCt17tAeZ3G18C1m7c-Xze5v_LhP6VqXBVR45E&page=1`
 
-    // useEffect(() => {
-    //     const url = ``
-    // },[userInput])
+    const fetchImages = async () => {
+        const response = await axios.get(url);
+        return response;
+    }
+
+    useEffect(() => {
+        fetchImages().then((res) => {
+            const response = res?.data?.results.filter((item) => {
+                return item?.tags[1]?.title || item?.tags[0]?.title;
+            }).map((item) => item?.tags[1]?.title || item?.tags[0]?.title);
+            const filtered = response.filter((value, index, self) => { return self.indexOf(value) === index });
+            setSearchSuggestions(filtered);
+            console.log(filtered);
+        }).catch((err) => {
+            console.log(err);
+        })
+    }, [userInput])
 
     return (
         <Wrapper>
@@ -24,7 +40,7 @@ const Navbar = () => {
                         </Typography>
                     </div>
                     <div className={dark ? "mid dark" : "mid"} >
-                        <Autocomplete onChange={(e, value) => console.log(value)} sx={{ width: "419px", backgroundColor: `${dark ? "#4f4f4f" : "#FFFFFF"}` }} options={dummyData} renderInput={(params) => <TextField value={userInput} onChange={(e) => setUserInput(e.target.value)} {...params} label="Search Images here" />} />
+                        <Autocomplete onChange={(e, value) => userSearch(value)} sx={{ width: "419px", backgroundColor: `${dark ? "#4f4f4f" : "#FFFFFF"}` }} options={suggestions} renderInput={(params) => <TextField value={userInput} onChange={(e) => setUserInput(e.target.value)} {...params} label="Search Images here" />} />
                         <ul className="ul">
                             <li>Explore</li>
                             <li>Collection</li>
