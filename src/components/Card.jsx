@@ -84,6 +84,8 @@ const Wrapper = styled.div`
                 font-family: 'Poppins', sans-serif;
                 margin-top:3px ;
                 font-weight:600 ;
+                max-width:110px ;
+                word-wrap:break-word ;
                 color:#a7a7a7;
             }
         }
