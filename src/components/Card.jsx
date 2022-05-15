@@ -28,7 +28,7 @@ const Card = ({ image }) => {
                             </div>
                         </div>
                         <div className={dark ? "dark right" : "right"}>
-                            <ThumbUpOutlinedIcon />
+                            <ThumbUpOutlinedIcon className='like' />
                             <p>{formatNumber(image.likes)}</p>
                         </div>
                     </div>
@@ -101,6 +101,17 @@ const Wrapper = styled.div`
     .dark{
         background-color:#141414 ;
         color:#e5e5e5;
+    }
+
+    @media (max-width:1172px){
+        .user{
+            .name,.username{
+                font-size:12px ;
+            }
+        }
+        .right,.like{
+            font-size:13px ;
+        }
     }
 
 `
