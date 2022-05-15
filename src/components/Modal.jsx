@@ -137,6 +137,7 @@ const Wrapper = styled.div`
             }
             img{
                 min-width:35vw ;
+                object-fit:cover ;
                 width:100%;
                 height:100%;
             }
