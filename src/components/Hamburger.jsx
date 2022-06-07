@@ -14,7 +14,7 @@ import DarkMode from "./DarkMode";
 import NavLinks from "./NavLinks";
 
 const Hamburger = () => {
-    const { dark } = useGlobalContext();
+    const { theme } = useGlobalContext();
     const [open, setOpen] = useState(false);
     const anchorRef = useRef(null);
 
@@ -49,7 +49,7 @@ const Hamburger = () => {
         prevOpen.current = open;
     }, [open]);
     return (
-        <Wrapper>
+        <Wrapper theme={theme}>
             <Stack direction="row" spacing={2}>
                 <div>
                     <Button
@@ -60,7 +60,7 @@ const Hamburger = () => {
                         aria-haspopup="true"
                         onClick={handleToggle}
                     >
-                        <MenuOutlinedIcon sx={{ color: `${dark ? "#ffffff" : "#000000"}` }} fontSize="large" />
+                        <MenuOutlinedIcon sx={{ color: `${theme.color}` }} fontSize="large" />
                     </Button>
                     <Popper
                         open={open}
@@ -79,14 +79,14 @@ const Hamburger = () => {
                                 }}
 
                             >
-                                <Paper style={{ backgroundColor: `${dark ? "#232323" : ""}` }}>
+                                <Paper style={{ backgroundColor: `${theme.background}` }}>
                                     <ClickAwayListener onClickAway={handleClose}>
                                         <MenuList
                                             autoFocusItem={open}
                                             id="composition-menu"
                                             aria-labelledby="composition-button"
                                             onKeyDown={handleListKeyDown}
-                                            className={dark ? "menuItems dark" : "menuitems"}
+                                            className="menuitems"
                                         >
                                             <MenuItem className="display_darkmode_btn"><DarkMode /></MenuItem>
                                             <MenuItem className="display_navLinks"><NavLinks /></MenuItem>
@@ -109,9 +109,7 @@ const Wrapper = styled.div`
             display:flex;
             flex-direction:column;
             height:auto ;
-            &.dark{
-                background-color:#232323 ;
-            }
+            background-color:${(props) => props.theme.background} ;
         }
         .display_darkmode_btn,.display_navLinks{
             display:none;

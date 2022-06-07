@@ -3,10 +3,10 @@ import { Switch, styled as style } from "@mui/material";
 import { useGlobalContext } from "../context/context";
 
 const DarkMode = () => {
-    const { toggleDarkMode, dark } = useGlobalContext();
+    const { toggleDarkMode, theme, dark } = useGlobalContext();
     return (
-        <Wrapper>
-            <label htmlFor='toggleDark' className={dark ? "dark label" : "label"}>
+        <Wrapper theme={theme}>
+            <label htmlFor='toggleDark' className="label">
                 Dark Mode
             </label>
             <MaterialUISwitch id="toggleDark" checked={dark} onChange={toggleDarkMode} />
@@ -66,9 +66,7 @@ const Wrapper = styled.div`
 
     .label{
         font-weight:700 ;
-    }
-    .dark{
-        color:#ffffff ;
+        color:${(props) => props.theme.color}
     }
     display:flex ;
     align-items:center ;

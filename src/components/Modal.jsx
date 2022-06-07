@@ -11,7 +11,7 @@ import Button from "./Button";
 import formatNumber from "../utils/FormatNumbers";
 
 const Modal = () => {
-    const { modalOpen, closeModal, modalInfo, dark } = useGlobalContext();
+    const { modalOpen, theme, closeModal, modalInfo } = useGlobalContext();
     const userInsta = modalInfo?.user?.social?.instagram_username;
     const userTwitter = modalInfo?.user?.social?.twitter_username;
     return (
@@ -21,8 +21,8 @@ const Modal = () => {
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
         >
-            <Wrapper>
-                <Box className={dark ? "dark container" : "container"}>
+            <Wrapper theme={theme}>
+                <Box className="container">
                     <div className="top">
                         <img src={modalInfo?.urls?.regular} alt="img" />
                         <div className="buttons">
@@ -44,7 +44,7 @@ const Modal = () => {
                             <CloseOutlinedIcon />
                         </div>
                     </div>
-                    <div className={dark ? "bottom dark" : "bottom"}>
+                    <div className="bottom">
                         <div className="bottom_top">
                             <div className="bottom_top_left">
                                 <div className="top_left">
@@ -118,11 +118,8 @@ const Wrapper = styled.div`
         height: 90%;
         min-width:900px;
         overflow: hidden;
-        background-color: #fff;
+        background-color: ${(props) => props.theme.background};
         border-radius: 9px;
-        &.dark{
-            background-color:#141414 ;
-        }
         .top{
             position:relative ;
             display:flex ;
@@ -130,7 +127,7 @@ const Wrapper = styled.div`
             height:70%;
             .close{
                 position:absolute ;
-                background-color:#ffffff;
+                background-color:${(props) => props.theme.background};
                 border-radius:50% ;
                 cursor: pointer;
                 right:0 ;
@@ -168,9 +165,8 @@ const Wrapper = styled.div`
         }
         .bottom{
             margin:10px 25px 0 25px;
-            &.dark{
-                color:#e5e5e5e5 ;
-            }
+            color:${(props) => props.theme.color} ;
+            
             .bottom_top{
                 display:flex ;
                 justify-content:space-between ;

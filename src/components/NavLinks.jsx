@@ -2,10 +2,10 @@ import styled from "@emotion/styled"
 import { useGlobalContext } from "../context/context"
 
 const NavLinks = () => {
-    const { dark } = useGlobalContext();
+    const { theme } = useGlobalContext();
     return (
-        <Wrapper>
-            <ul className={dark ? "dark" : ""}>
+        <Wrapper theme={theme}>
+            <ul>
                 <li>Explore</li>
                 <li>Collection</li>
                 <li>Community</li>
@@ -16,15 +16,12 @@ const NavLinks = () => {
 
 const Wrapper = styled.div`
     ul{
-        color: #333333;
+        color: ${(props) => props.theme.color};
         list-style-type: none;
         display: flex;
         justify-content: space-between;
         width: 400px;
         font-weight: 700;
-    }
-    .dark{
-        color:#FFFFFF;
     }
 
     @media (max-width:1330px){

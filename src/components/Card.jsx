@@ -5,9 +5,9 @@ import { useGlobalContext } from '../context/context';
 import formatNumber from '../utils/FormatNumbers';
 
 const Card = ({ image }) => {
-    const { dark, openModal, Modaldata } = useGlobalContext();
+    const { theme, openModal, Modaldata } = useGlobalContext();
     return (
-        <Wrapper>
+        <Wrapper theme={theme}>
             <div onClick={() => {
                 Modaldata(image);
                 openModal();
@@ -15,19 +15,19 @@ const Card = ({ image }) => {
                 className={image.width > image.height ? "card card_wide" : "card card_tall"}>
                 <div className="card">
                     <img src={image.urls.small} alt="dkasj" />
-                    <div className={dark ? "info dark" : "info"}>
+                    <div className="info">
                         <div className="left">
                             <img src={image.user.profile_image.small} alt={image.user.username} />
-                            <div className={dark ? "dark user" : "user"}>
-                                <div className={dark ? "dark name" : "name"}>
+                            <div className="user">
+                                <div className="name">
                                     {image.user.name}
                                 </div>
-                                <div className={dark ? "dark username" : "username"}>
+                                <div className="username">
                                     @{image.user.username}
                                 </div>
                             </div>
                         </div>
-                        <div className={dark ? "dark right" : "right"}>
+                        <div className="right">
                             <ThumbUpOutlinedIcon className='like' />
                             <p>{formatNumber(image.likes)}</p>
                         </div>
@@ -57,7 +57,7 @@ const Wrapper = styled.div`
         }
     }
     .info{
-        background-color:#FFFFFF ;
+        background-color:${(props) => props.theme.cardsBackground};
         min-height: 5rem;
         padding:0.7rem ;
         display: flex;
@@ -78,7 +78,7 @@ const Wrapper = styled.div`
             margin-left:0.7rem ;
             .name{
                 font-weight:700 ;
-                color:#4f4f4f;
+                color:${(props) => props.theme.title};
             }
             .username{
                 font-family: 'Poppins', sans-serif;
@@ -86,7 +86,7 @@ const Wrapper = styled.div`
                 font-weight:600 ;
                 max-width:110px ;
                 word-wrap:break-word ;
-                color:#a7a7a7;
+                color:${(props) => props.theme.subtitle};
             }
         }
     }
@@ -95,14 +95,10 @@ const Wrapper = styled.div`
         display:flex ;
         justify-content:space-between ;
         align-items:center;
-        color:#4f4f4f;
+        color:${(props) => props.theme.title};
         p{
             margin-left: 5px;
         }
-    }
-    .dark{
-        background-color:#141414 ;
-        color:#e5e5e5;
     }
 
     @media (max-width:1172px){
