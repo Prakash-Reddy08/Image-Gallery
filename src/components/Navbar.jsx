@@ -10,24 +10,24 @@ import useFetch from "../useFetch";
 import FilterSuggestions from "../utils/FilterSuggestions";
 
 const Navbar = () => {
-    const { dark, userSearch } = useGlobalContext();
+    const { userSearch, theme } = useGlobalContext();
     const [userInput, setUserInput] = useState("");
     const url = `https://api.unsplash.com/search/photos/?query=${userInput}&client_id=RN5XslCt17tAeZ3G18C1m7c-Xze5v_LhP6VqXBVR45E&page=1`
 
     const { data } = useFetch(url);
     const suggestions = FilterSuggestions(data);
-
+    console.log(theme);
     return (
-        <Wrapper>
-            <AppBar position="fixed" sx={{ backgroundColor: `${dark ? "#232323" : "#FFFFFF"}`, boxShadow: "none", height: "97px", justifyContent: "center" }}>
-                <Toolbar className={dark ? "toolbar dark" : "toolbar"}>
+        <Wrapper theme={theme}>
+            <AppBar position="fixed" sx={{ backgroundColor: `${theme.background}`, boxShadow: "none", height: "97px", justifyContent: "center" }}>
+                <Toolbar className="toolbar">
                     <div className="left">
-                        <Typography className="logo" variant="h4" sx={{ fontFamily: 'Pattaya', color: `${dark ? "#FFFFFF" : "#333333"}` }}>
+                        <Typography className="logo" variant="h4" sx={{ fontFamily: 'Pattaya', color: `${theme.color}` }}>
                             Image Galary
                         </Typography>
                     </div>
-                    <div className={dark ? "mid dark" : "mid"} >
-                        <Autocomplete onChange={(e, value) => userSearch(value)} sx={{ width: "419px", backgroundColor: `${dark ? "#4f4f4f" : "#FFFFFF"}` }} options={suggestions || []} renderInput={(params) => <TextField value={userInput} onChange={(e) => setUserInput(e.target.value)} {...params} label="Search Images here" />} />
+                    <div className="mid">
+                        <Autocomplete onChange={(e, value) => userSearch(value)} sx={{ width: "419px", backgroundColor: `${theme.background}` }} options={suggestions || []} renderInput={(params) => <TextField value={userInput} onChange={(e) => setUserInput(e.target.value)} {...params} label="Search Images here" />} />
                         <div className="links">
                             <NavLinks />
                         </div>
@@ -51,17 +51,12 @@ const Wrapper = styled.div`
     .toolbar{
         display: flex;
         justify-content: space-evenly;
+        .right,.hamb_seach{
+            color:${(props) => props.theme.color};
+        }
     }
     .mid{
         display: flex;
-    }
-    .right{
-        color: #333333;
-    }
-    .dark{
-        .right,.hamb_seach{
-            color:#FFFFFF;
-        }
     }
 
     .hamb_seach{

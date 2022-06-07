@@ -3,12 +3,12 @@ import { useGlobalContext } from "../context/context.js";
 import Card from "./Card.jsx";
 
 const Images = () => {
-    const { dark, data } = useGlobalContext();
+    const { theme, data } = useGlobalContext();
     return (
-        <Wrapper>
-            <div className={dark ? "grid dark" : "grid"}>
+        <Wrapper theme={theme}>
+            <div className="grid">
 
-                <div className={dark ? "grid_container dark" : "grid_container"}>
+                <div className="grid_container">
                     {
                         data?.results?.map((photo) => {
                             return <Card image={photo} key={photo.id} />
@@ -25,9 +25,7 @@ const Wrapper = styled.div`
             display:flex ;
             justify-content: center;
             padding: 50px 0 ;
-            &.dark{
-                background-color:#232323;
-            }
+            background-color:${(props) => props.theme.imagesSectionBackground};
         }
         .grid_container{
             width:80%;

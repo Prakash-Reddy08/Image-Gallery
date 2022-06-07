@@ -12,6 +12,21 @@ const AppProvider = ({ children }) => {
 
     const { data, loading } = useFetch(url);
 
+    const theme = dark ? {
+        color: "#ffffff",
+        title: "#e5e5e5",
+        subtitle: "#a7a7a7",
+        background: "#232323",
+        cardsBackground: "#141414",
+        imagesSectionBackground: "#232323"
+    } : {
+        color: "#333333",
+        title: "#4f4f4f",
+        subtitle: "#a7a7a7",
+        background: "#ffffff",
+        cardsBackground: "#ffffff",
+        imagesSectionBackground: "#e5e5e5"
+    }
 
     const userSearch = (query) => {
         setSearch(query);
@@ -44,7 +59,8 @@ const AppProvider = ({ children }) => {
                     Modaldata,
                     loading,
                     data,
-                    userSearch
+                    userSearch,
+                    theme
                 }}>
             {children}
         </AppContext.Provider>
