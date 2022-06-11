@@ -14,9 +14,22 @@ const Navbar = () => {
     const [userInput, setUserInput] = useState("");
     const url = `https://api.unsplash.com/search/photos/?query=${userInput}&client_id=RN5XslCt17tAeZ3G18C1m7c-Xze5v_LhP6VqXBVR45E&page=1`
 
+    const debounce = (cb, delay = 1000) => {
+        let timeout;
+        return (...args) => {
+            clearTimeout(timeout)
+            timeout = setTimeout(() => {
+                cb(...args)
+            }, delay)
+        }
+    }
+
+    const updateQuery = e => setUserInput(e?.target?.value)
+
+    const debounceOnChange = debounce(updateQuery, 900)
+
     const { data } = useFetch(url);
     const suggestions = FilterSuggestions(data);
-    console.log(theme);
     return (
         <Wrapper theme={theme}>
             <AppBar position="fixed" sx={{ backgroundColor: `${theme.background}`, boxShadow: "none", height: "97px", justifyContent: "center" }}>
@@ -27,7 +40,16 @@ const Navbar = () => {
                         </Typography>
                     </div>
                     <div className="mid">
-                        <Autocomplete onChange={(e, value) => userSearch(value)} sx={{ width: "419px", backgroundColor: `${theme.background}` }} options={suggestions || []} renderInput={(params) => <TextField value={userInput} onChange={(e) => setUserInput(e.target.value)} {...params} label="Search Images here" />} />
+                        <Autocomplete onChange={(e, value) => userSearch(value)}
+                            sx={{ width: "419px", backgroundColor: `${theme.background}` }}
+                            options={suggestions || []} renderInput={(params) =>
+                            (<TextField
+                                sx={{ input: { backgroundColor: `${theme.background}`, color: `${theme.color}`, } }}
+                                value={userInput}
+                                onChange={debounceOnChange} {...params} label="Search Images here"
+                            />)}
+
+                        />
                         <div className="links">
                             <NavLinks />
                         </div>

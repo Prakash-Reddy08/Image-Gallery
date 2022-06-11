@@ -128,6 +128,7 @@ const Wrapper = styled.div`
             .close{
                 position:absolute ;
                 background-color:${(props) => props.theme.background};
+                color:${(props) => props.theme.color};
                 border-radius:50% ;
                 cursor: pointer;
                 right:0 ;
